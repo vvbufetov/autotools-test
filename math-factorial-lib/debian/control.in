@@ -1,0 +1,6 @@
+Package: @PACKAGE@
+Architecture: all
+Maintainer: bw@rle.ru
+Priority: optional
+Version: @VERSION@
+Description: Integer factorial calculation utility and library

@@ -1,0 +1,14 @@
+#!/bin/bash
+cd $( dirname "$0" )
+PACKAGE=@PACKAGE@
+VERSION=@VERSION@
+test -z "$PACKAGE" -o -z "$VERSION" && exit -1
+wd=` readlink -f . `
+pkg_dir="${PACKAGE}-${VERSION}"
+deb_dir="$pkg_dir/DEBIAN"
+mkdir -p $deb_dir
+cp control $deb_dir/
+cd ../
+make DESTDIR=$wd/$pkg_dir install
+# cd - >/dev/null
+dpkg-deb --build debian/$pkg_dir
